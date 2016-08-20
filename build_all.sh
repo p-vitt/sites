@@ -13,20 +13,29 @@ do
   export GLUON_SITEDIR=$(readlink -f "$d")
   # get the name of the site and append it to the output path
   export GLUON_OUTPUTDIR=$(pwd)/output/$(basename "$d")
+  # set the priority used for auto updating
+  export GLUON_PRIORITY=0
   make update
   make clean
   make
+  make manifest
 done
 
-# Copy me to your gluon folder, which should be next to your site folder:
+# 1. Copy me to your gluon folder, which should be next to your site folder:
 #     /some/path/sites/
 #     /some/path/gluon/
 #
-# Export the branch you want to build:
-#     export GLUON_BRANCH=stable
-# adapt the firmware version
-#     export DEFAULT_GLUON_RELEASE=16.06.1
+# 2. Export the branch you want to build:
+#      export GLUON_BRANCH=stable
+#    adapt the firmware version
+#      export DEFAULT_GLUON_RELEASE=16.06.1
 #
-# and call ./build_all.sh in /some/path/gluon/
+# 3. and call ./build_all.sh in /some/path/gluon/
 #
-# Output will be in /some/path/gluon/output/<site>/
+# 4. Output will be in /some/path/gluon/output/<site>/
+#
+# 5. Sign the manifest
+#      contrib/sign.sh /path/to/private_key output/images/<site>/<sysupgrade/factory>/<branch>.manifest
+#    and check whether the test returns 0
+#      contrib/sigtest.sh [Publickey] output/images/<site>/<sysupgrade/factory>/<branch>.manifest
+#      echo $?
