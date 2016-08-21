@@ -13,8 +13,6 @@ do
   export GLUON_SITEDIR=$(readlink -f "$d")
   # get the name of the site and append it to the output path
   export GLUON_OUTPUTDIR=$(pwd)/output/$(basename "$d")
-  # set the priority used for auto updating
-  export GLUON_PRIORITY=0
   make update
   make clean
   make
