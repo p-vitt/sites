@@ -13,6 +13,8 @@ do
   export GLUON_SITEDIR=$(readlink -f "$d")
   # get the name of the site and append it to the output path
   export GLUON_OUTPUTDIR=$(pwd)/output/$(basename "$d")
+  # tabula rasa
+  rm $GLUON_OUTPUTDIR/*
   make update
   make clean
   make
