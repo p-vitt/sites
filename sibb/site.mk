@@ -25,17 +25,23 @@ GLUON_SITE_PACKAGES := \
         iptables \
 	haveged
 
-DEFAULT_GLUON_RELEASE := 16.06.1
+##  DEFAULT_GLUON_RELEASE
+#   version string to use for images
+#   gluon relies on
+#     opkg compare-versions "$1" '>>' "$2"
+#   to decide if a version is newer or not.
+DEFAULT_GLUON_RELEASE := $(shell date '+%y.%m').2
 
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
 
+# Default priority for updates.
 GLUON_PRIORITY ?= 0
 
-GLUON_BRANCH ?= stable
-export GLUON_BRANCH
-
 GLUON_TARGET ?= ar71xx-generic
-export GLUON_TARGET
 
+# Region code required for some images; supported values: us eu
+GLUON_REGION ?= eu
+
+# Languages to include
 GLUON_LANGS ?= de
