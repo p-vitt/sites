@@ -17,7 +17,7 @@ do
   rm $GLUON_OUTPUTDIR/*
   make update
   make clean
-  make
+  make -j `cat /proc/cpuinfo | grep processor | wc -l`
   make manifest
 done
 
