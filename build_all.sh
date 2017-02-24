@@ -28,7 +28,7 @@ done
 # 2. Export the branch you want to build:
 #      export GLUON_BRANCH=stable
 #    adapt the firmware version
-#      export DEFAULT_GLUON_RELEASE=16.06.1
+#      export GLUON_RELEASE=16.06.1
 #
 # 3. and call ./build_all.sh in /some/path/gluon/
 #
