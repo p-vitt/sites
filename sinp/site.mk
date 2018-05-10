@@ -44,4 +44,4 @@ GLUON_TARGET ?= ar71xx-generic
 GLUON_REGION ?= eu
 
 # Languages to include
-GLUON_LANGS ?= de
+GLUON_LANGS ?= de en
