@@ -30,7 +30,7 @@ GLUON_SITE_PACKAGES := \
 #   gluon relies on
 #     opkg compare-versions "$1" '>>' "$2"
 #   to decide if a version is newer or not.
-DEFAULT_GLUON_RELEASE := $(shell date '+%y.%m').2
+DEFAULT_GLUON_RELEASE := $(shell date '+%y.%m').1
 
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
