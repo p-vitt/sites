@@ -8,7 +8,8 @@ export GLUON_TARGET=ar71xx-generic
 # find all visible directories in relative path ../sites and only there (no recursion)
 #for d in $(find ../sites/ -mindepth 1 -maxdepth 1 -not -path '*/\.*' -type d)
 # right now we only support fb, hb and si
-for d in ../sites/sifb ../sites/sihb ../sites/sisi
+#for d in ../sites/sifb ../sites/sihb ../sites/sisi
+for d in ../sites/sinp
 do
   echo "Building firmware image for site $(basename "$d")"
   # convert relative into absolute path and export it

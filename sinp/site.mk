@@ -23,7 +23,7 @@ GLUON_SITE_PACKAGES := \
         haveged \
         iwinfo
 
-        gluon-next-node \
+#        gluon-next-node \
         iptables \
         gluon-luci-portconfig \
         gluon-luci-private-wifi \
