@@ -6,7 +6,9 @@ set -u
 export GLUON_TARGET=ar71xx-generic
 
 # find all visible directories in relative path ../sites and only there (no recursion)
-for d in $(find ../sites/ -mindepth 1 -maxdepth 1 -not -path '*/\.*' -type d)
+#for d in $(find ../sites/ -mindepth 1 -maxdepth 1 -not -path '*/\.*' -type d)
+# right now we only support fb, hb and si
+for d in ../sites/sifb ../sites/sihb ../sites/sisi
 do
   echo "Building firmware image for site $(basename "$d")"
   # convert relative into absolute path and export it
@@ -14,7 +16,7 @@ do
   # get the name of the site and append it to the output path
   export GLUON_OUTPUTDIR=$(pwd)/output/$(basename "$d")
   # tabula rasa
-  rm $GLUON_OUTPUTDIR/*
+  rm -rf $GLUON_OUTPUTDIR/*
   make update
   make clean
   make -j `cat /proc/cpuinfo | grep processor | wc -l`
@@ -35,7 +37,6 @@ done
 # 4. Output will be in /some/path/gluon/output/<site>/
 #
 # 5. Sign the manifest
-#      contrib/sign.sh /path/to/private_key output/images/<site>/<sysupgrade/factory>/<branch>.manifest
+#      contrib/sign.sh /path/to/private_key output/<site>/images/sysupgrade/<branch>.manifest
 #    and check whether the test returns 0
-#      contrib/sigtest.sh [Publickey] output/images/<site>/<sysupgrade/factory>/<branch>.manifest
-#      echo $?
+#      contrib/sigtest.sh `cat /path/to/public_key` output/<site>/images/sysupgrade/<branch>.manifest && echo $?
