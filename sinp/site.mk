@@ -18,7 +18,6 @@ GLUON_SITE_PACKAGES := \
         gluon-mesh-batman-adv-15 \
         gluon-mesh-vpn-fastd \
         gluon-radvd \
-        gluon_setup_mode \
         gluon_status_page \
         haveged \
         iwinfo
